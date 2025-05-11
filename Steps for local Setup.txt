@@ -1,0 +1,105 @@
+1. Install dependencies : 
+
+Open 2 terminals:
+
+# Terminal 1
+cd frontend
+npm install
+
+# Terminal 2
+cd backend
+npm install
+
+✅ Node version: v18.20.8
+✅ NPM version: 10.8.2
+
+2. Setting up MongoDB
+Go to MongoDB Atlas.
+
+Sign in and create a new project & cluster.
+
+In the Database Access tab, create a database user.
+
+In Network Access, allow access from 0.0.0.0/0.
+
+Go to Clusters → Connect → Drivers, and copy your connection string:
+
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+
+3.Setting up Google OAuth Client ID
+Go to Google Cloud Console.
+
+Create a new project or select existing.
+
+Go to APIs & Services → Credentials.
+
+Click "Create Credentials" → OAuth Client ID.
+
+Choose Web Application and set:
+Authorized Redirect URI:https://your-frontend-url.com & localhost
+
+Copy the generated Client ID: For ex. 974234234-aeew4535873864567qdsafds8j6.apps.googleusercontent.com
+
+4.Deploying Backend on Render
+Go to render.com, log in.
+
+Click "New Web Service" → Connect your GitHub
+
+Select the webchat or hifiChat repo
+
+Set these settings:
+
+Branch: main
+
+Root Directory: backend
+
+Build Command: npm install
+
+Start Command: npm start
+
+Add environment variables:
+JWT_SECRET=your-name
+MONGO_URI=your-mongodb-uri
+REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
+CLIENT_URL=https://your-vercel-app.vercel.app
+
+5.Deploying Frontend on Vercel
+Go to vercel.com
+
+Click "Add New Project", import the same repo
+
+Set these settings:
+
+Framework: React
+
+Root Directory: frontend
+
+Install Command: npm install
+
+Build Command: npm run build
+
+Output Directory: build
+
+Add environment variables:
+REACT_APP_BACKEND_URL=https://your-backend.onrender.com
+REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
+
+6.Running Locally
+In both frontend/.env and backend/.env, add:
+frontend/.env
+REACT_APP_BACKEND_URL=http://localhost:5000
+REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
+
+backend/.env
+MONGO_URI=your-mongo-uri
+JWT_SECRET=your-name
+CLIENT_URL=http://localhost:3000
+REACT_APP_GOOGLE_CLIENT_ID=your-google-client-id
+
+# Terminal 1
+cd backend
+npm start
+
+# Terminal 2
+cd frontend
+npm start
