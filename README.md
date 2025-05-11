@@ -4,6 +4,6 @@
 
 HiFi Chat is a **full-stack real-time chat app** built using the **MERN Stack** with **Socket.IO** integration. It supports **one-on-one and group chats**, **Google OAuth login**, and provides a fully responsive UI with **Chakra UI**.
 
-**Steps for local steps and Deployment** : 
+**Steps for local steps and Deployment** : Steps for local Setup.txt
 
 
